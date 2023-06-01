@@ -170,8 +170,8 @@ def naive2_predictions(dataset_name, directory, num_obs, y_train_df = None, y_te
     # Panel of fitted models
     for unique_id in unique_ids:
         # Fast filter X and y by id.
-        top_row = np.asscalar(y_train_df['unique_id'].searchsorted(unique_id, 'left'))
-        bottom_row = np.asscalar(y_train_df['unique_id'].searchsorted(unique_id, 'right'))
+        top_row = np.ndarray.item(y_train_df['unique_id'].searchsorted(unique_id, 'left'))
+        bottom_row = np.ndarray.item(y_train_df['unique_id'].searchsorted(unique_id, 'right'))
         y_id = y_train_df[top_row:bottom_row]
 
         y_naive2 = pd.DataFrame(columns=['unique_id', 'ds', 'y_hat'])
